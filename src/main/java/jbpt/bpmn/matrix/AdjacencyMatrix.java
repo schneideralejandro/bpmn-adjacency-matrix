@@ -79,6 +79,38 @@ public class AdjacencyMatrix<E extends IDirectedEdge<V>, V extends IVertex> {
     for (int i=0; i<verticesAsList.size(); i++) {
       result += String.format("%-4d", i);
       for (int j=0; j<verticesAsList.size(); j++) {
+        result += String.format("%-4s",(matrix[i][j] ? "1" : "-"));
+      }
+      result += String.format("%-4d", i);
+      result += "\n";
+    }
+
+    result += "    ";
+    for (int i=0; i<verticesAsList.size(); i++) result += String.format("%-4d", i);
+    result += "    \n";
+
+    result += "==================================================";
+    return result;
+  }
+
+  public String toString(int label) {
+    if (matrix == null) calculateMatrix();
+
+    String result = "";
+    result += "==================================================\n";
+    result += " "+ label + ". Adjacency matrix\n";
+    result += "--------------------------------------------------\n";
+
+    for (int i=0; i<verticesAsList.size(); i++) result += String.format("%d : %s\n", i, verticesAsList.get(i));
+    result += "--------------------------------------------------\n";
+
+    result += "    ";
+    for (int i=0; i<verticesAsList.size(); i++) result += String.format("%-4d", i);
+    result += "    \n";
+
+    for (int i=0; i<verticesAsList.size(); i++) {
+      result += String.format("%-4d", i);
+      for (int j=0; j<verticesAsList.size(); j++) {
         result += String.format("%-4s",(matrix[i][j] ? "+" : "-"));
       }
       result += String.format("%-4d", i);
