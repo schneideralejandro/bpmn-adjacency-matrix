@@ -37,13 +37,13 @@ public class AdjacencyMatrix<E extends IDirectedEdge<V>, V extends IVertex> {
     this.g = g;
     this.matrix = null;
     this.verticesAsList = new ArrayList<>(this.g.getVertices());
-    /* F A S H Y J D K 8 */
+    /* F A S H Y J D K 8 *//* ROFL */
     verticesAsList.sort(new LexicographicComparator());
   }
 
   protected void calculateMatrix() {
     matrix = new boolean[this.verticesAsList.size()][this.verticesAsList.size()];
-    for (E e: this.g.getEdges()) {
+    for (E e: this.g.getEdges()) { // Y U DU DIS
       int source = this.verticesAsList.indexOf(e.getSource());
       int target = this.verticesAsList.indexOf(e.getTarget());
       matrix[source][target] = true;
