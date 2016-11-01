@@ -3,6 +3,7 @@ package jbpt.bpmn.matrix;
 import java.util.ArrayList;
 import java.util.List;
 
+import jbpt.bpmn.gobject.comparator.LexicographicComparator;
 import org.jbpt.graph.abs.IDirectedEdge;
 import org.jbpt.graph.abs.IDirectedGraph;
 import org.jbpt.hypergraph.abs.IVertex;
@@ -28,14 +29,16 @@ public class AdjacencyMatrix<E extends IDirectedEdge<V>, V extends IVertex> {
    * The graph attribute is not necessary. However, we wanted to keep the coding style consistent with JBPT's
    * {@link org.jbpt.algo.graph.TransitiveClosure TransitiveClosure} class.
    */
-  protected IDirectedGraph<E, V> g;
-  protected List<V> verticesAsList;
-  protected boolean[][] matrix;
+  private IDirectedGraph<E, V> g;
+  private List<V> verticesAsList;
+  private boolean[][] matrix;
 
   public AdjacencyMatrix(IDirectedGraph<E, V> g) {
     this.g = g;
     this.matrix = null;
-    this.verticesAsList = new ArrayList<V>(this.g.getVertices());
+    this.verticesAsList = new ArrayList<>(this.g.getVertices());
+    /* F A S H Y J D K 8 */
+    verticesAsList.sort(new LexicographicComparator());
   }
 
   protected void calculateMatrix() {
