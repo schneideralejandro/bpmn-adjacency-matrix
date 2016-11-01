@@ -43,7 +43,7 @@ public class AdjacencyMatrix<E extends IDirectedEdge<V>, V extends IVertex> {
 
   protected void calculateMatrix() {
     matrix = new boolean[this.verticesAsList.size()][this.verticesAsList.size()];
-    for (E e: this.g.getEdges()) { // Y U DU DIS
+    for (E e: this.g.getEdges()) {
       int source = this.verticesAsList.indexOf(e.getSource());
       int target = this.verticesAsList.indexOf(e.getTarget());
       matrix[source][target] = true;
