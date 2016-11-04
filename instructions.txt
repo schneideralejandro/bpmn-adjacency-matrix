@@ -1,0 +1,14 @@
+En el metodo run() de la clase ModelGenerator del generador de modelos la usamos de la siguiente manera. Si 'g' es el modelo que se quiere mostrar:
+
+AdjacencyMatrix adjacencyMatrix = new AdjacencyMatrix<>(g);
+String string = adjacencyMatrix.toString();
+System.out.println(string);
+
+En JBPT, 'g' tiene que implementar la interfaz IDirectedGraph<E, V>:
+a. E extiende la interfaz IDirectedEdge<V>.
+b. V extiende la interfaz IVertex.
+
+Por ejemplo, en el generador de modelos la usamos con instancias de Bpmn<BpmnControlFlow<FlowNode>, FlowNode>:
+a. Bpmn: modelo BPMN.
+b. BpmnControlFlow: flujo de control/secuencia.
+c. FlowNode: evento, actividad o gateway.
